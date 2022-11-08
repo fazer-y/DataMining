@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "tw",
+            "database": "${workspaceFolder:DataSpider}/tw.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
