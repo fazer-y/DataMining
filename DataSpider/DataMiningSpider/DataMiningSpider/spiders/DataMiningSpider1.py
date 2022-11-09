@@ -14,8 +14,10 @@ class Dataminingspider1Spider(scrapy.Spider):
         urls = []
         urls = [(self.urlFront + url) for url in response.xpath(
             '//td[@class="search_table_detail_col"]/h4/a/@href').extract()]
+        print(urls)
         for url in urls:
-            yield scrapy.Request(url=url, callback=self.parse_detail)
+            print(url)
+            yield scrapy.Request(url=url, callback=self.parse_url)
         
         print("正在爬取第" + str(count) + "页")
 
@@ -25,14 +27,23 @@ class Dataminingspider1Spider(scrapy.Spider):
                 str(count * 10)
             yield scrapy.Request(url=nextUrl, callback=self.parse)
 
-    def parse_detail(self, response):
+    def parse_url(self, response):
         # 创建一个item对象
         item = DataminingspiderItem()
         # 提取图片的每一个信息
-        # title
-        item['detailUrl'] = response.xpath(
+        # 获取论文地址
+        url = self.urlFront + response.xpath(
             '/html/body/div[2]/div/div[3]/ol/li[1]/a/text()').extract_first()
-        item['title'] = response.xpath(
-            '/html/body/div[2]/div/div[1]/h2/text()').extract_first()
-        # 将item发送出去
+        print(url)
+        # 请求下载论文信息页面
+        yield scrapy.Request(url, callback=self.parse_detail)
+
+    def parse_detail(self, response):
+        # 提取论文信息
+        item = DataminingspiderItem()
+        item['author'] = response.xpath('//*[@id="format0_disparea"]/tbody/tr[2]/td/a/text()').extract_first()
+        item['title'] = response.xpath('//*[@id="format0_disparea"]/tbody/tr[4]/td/text()').extract_first()
+        item['instructor'] = response.xpath('//*[@id="format0_disparea"]/tbody/tr[6]/td/a[1]/text()').extract_first()
+        item['defenseMember'] = response.xpath('//*[@id="format0_disparea"]/tbody/tr[8]/td/a/text()').extract().join("、")
+
         yield item
