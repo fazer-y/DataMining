@@ -22,3 +22,10 @@ class DataminingspiderItem(scrapy.Item):
     references = scrapy.Field()         # 参考文献
     keyWord = scrapy.Field()            # 关键词
     quotTimes = scrapy.Field()          # 被引用次数
+
+class GeogNtuSpiderItem(scrapy.Item):
+    author = scrapy.Field()             # 作者
+    title = scrapy.Field()              # 论文标题
+    keyWord = scrapy.Field()            # 关键词
+    dateOfPublication = scrapy.Field()  # 发表时间
+    order = scrapy.Field()              # 期数

@@ -1,4 +1,4 @@
-# Scrapy settings for DataMiningSpider project
+# Scrapy settings for GeogNtuSpider project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,15 +7,15 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'DataMiningSpider'
+BOT_NAME = 'GeogNtuSpider'
 
-SPIDER_MODULES = ['DataMiningSpider.spiders']
-NEWSPIDER_MODULE = 'DataMiningSpider.spiders'
-# LOG_LEVEL = 'WARNING'
+SPIDER_MODULES = ['GeogNtuSpider.spiders']
+NEWSPIDER_MODULE = 'GeogNtuSpider.spiders'
 EED_EXPORT_ENCODING = 'utf-8'
 HTTPERROR_ALLOWED_CODES = [301, 302]
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'DataMiningSpider (+http://www.yourdomain.com)'
+#USER_AGENT = 'GeogNtuSpider (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -46,26 +46,26 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-# SPIDER_MIDDLEWARES = {
-#    'DataMiningSpider.middlewares.DataminingspiderSpiderMiddleware': 543,
-# }
+#SPIDER_MIDDLEWARES = {
+#    'GeogNtuSpider.middlewares.GeogntuspiderSpiderMiddleware': 543,
+#}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'DataMiningSpider.middlewares.DataminingspiderDownloaderMiddleware': 543,
-# }
+#DOWNLOADER_MIDDLEWARES = {
+#    'GeogNtuSpider.middlewares.GeogntuspiderDownloaderMiddleware': 543,
+#}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
-# EXTENSIONS = {
+#EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
-# }
+#}
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'DataMiningSpider.pipelines.DataminingspiderPipeline': 300,
+   'GeogNtuSpider.pipelines.GeogntuspiderPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
